@@ -53,10 +53,8 @@ def get_stats() -> str:
         headers={
             "Authorization": f"Basic {encoded_key}"
         }).json()
-    try:        
-        lang_data = data['human_readable_total']
-        if 1==1:
-            return   '```text\n'+lang_data+'\n```'
+    try:
+        lang_data = data['data']['languages']
     except KeyError:
         print("Please Add your WakaTime API Key to the Repository Secrets")
         sys.exit(1)
