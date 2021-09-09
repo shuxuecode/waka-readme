@@ -54,7 +54,7 @@ def get_stats() -> str:
             "Authorization": f"Basic {encoded_key}"
         }).json()
     try:        
-        lang_data = data['human_readable_total']
+        lang_data = data['data']['human_readable_total']
         if 1==1:
             return   '```text\n'+lang_data+'\n```'
     except KeyError:
