@@ -57,7 +57,8 @@ def get_stats() -> str:
         lang_data = data['data']['human_readable_total']
         if 1==1:            
             # return '```text\n'+this_week()+'\n\n'+lang_data+'\n```'
-            return '```text\n Total coding time in the last 7 days :  '+lang_data+'\n```'
+            # return '```text\n Total coding time in the last 7 days :  '+lang_data+'\n```'
+            return '<center><code>Total coding time in the last 7 days :  '+lang_data+'</code></center>'
     except KeyError:
         print("Please Add your WakaTime API Key to the Repository Secrets")
         sys.exit(1)
