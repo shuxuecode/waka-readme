@@ -49,18 +49,17 @@ def get_stats() -> str:
     '''Gets API data and returns markdown progress'''
     encoded_key: str = str(base64.b64encode(waka_key.encode('utf-8')), 'utf-8')
     data = requests.get(
-        f"{api_base_url.rstrip('/')}/v1/users/current/summaries?range=last_7_days",
+        f"{api_base_url.rstrip('/')}/v1/users/current/stats/last_7_days",
         headers={
             "Authorization": f"Basic {encoded_key}"
         }).json()
     try:        
-        return generate_table(data)
-        # lang_data = data['data']['human_readable_total']
-        # if 1==1:            
+        lang_data = data['data']['human_readable_total']
+        if 1==1:            
             # return '```text\n'+this_week()+'\n\n'+lang_data+'\n```'
             # return '```text\n Total coding time in the last 7 days :  '+lang_data+'\n```'
             # return '<center><code>Total coding time in the last 7 days :  '+lang_data+'</code></center>'
-            # return '<p align="center"><code>Total coding time in the last 7 days :  '+lang_data+'</code></p>'
+            return '<p align="center"><code>Total coding time in the last 7 days :  '+lang_data+'</code></p>'
     except KeyError:
         print("Please Add your WakaTime API Key to the Repository Secrets")
         sys.exit(1)
@@ -89,20 +88,6 @@ def get_stats() -> str:
     else:
         print("Usual Stats Generated")
         return '```text\n'+data+'\n```'
-
-def generate_table(data) -> str:
-    data_list = []
-    for item in data_list:
-        # item['grand_total']['text']
-        # item['range']['date']
-        data_list.append(item['range']['date'])
-        data_list.append(" -- ")
-        data_list.append(item['grand_total']['text'])
-    # print(data_list)    
-    data = '\n'.join(data_list)
-    print("debug")
-    print(data)
-    return data
 
 
 def decode_readme(data: str) -> str:
