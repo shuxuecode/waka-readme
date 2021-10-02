@@ -93,7 +93,7 @@ def get_stats() -> str:
 def generate_table(data) -> str:
     table_str = '<table border="1" cellspacing="0" cellpadding="20" align="center">'
     table_str += '<tbody>'
-    table_str += '<tr align="center"><td colspan=7>Total coding time in the last 7 days : ' + data['data']['cummulative_total']['text'] + '</td></tr>'
+    table_str += '<tr align="center"><td colspan=7>Total coding time in the last 7 days : ' + data['cummulative_total']['text'] + '</td></tr>'
     # 定义两行展示数据 
     tr1 = '<tr>'
     tr2 = '<tr>'
