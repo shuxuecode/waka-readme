@@ -48,13 +48,8 @@ def make_graph(percent: float, blocks: str) -> str:
 def get_stats() -> str:
     '''Gets API data and returns markdown progress'''
     encoded_key: str = str(base64.b64encode(waka_key.encode('utf-8')), 'utf-8')
-    # last_7_days 包含今天，使用下面的方式去掉今天统计
-    today = datetime.date.today()
-    start = str(today - datetime.timedelta(days=7))
-    end = str(today - datetime.timedelta(days=1))
-    param = "start=" + start + "&end=" + end
     data = requests.get(
-        f"{api_base_url.rstrip('/')}/v1/users/current/summaries?"+param,
+        f"{api_base_url.rstrip('/')}/v1/users/current/summaries?range=last_7_days",
         headers={
             "Authorization": f"Basic {encoded_key}"
         }).json()
@@ -110,6 +105,15 @@ def generate_table(data) -> str:
     table_str += tr1 + tr2
     table_str += '</tbody>'
     table_str += '</table>'
+    # for item in data['data']:
+    #     # item['grand_total']['text']
+    #     # item['range']['date']
+    #     data_list.append(item['range']['date'])
+    #     data_list.append(" -- ")
+    #     data_list.append(item['grand_total']['text'])
+    # # print(data_list)    
+    # data = '\n'.join(data_list)
+    # print("debug")
     print(table_str)
     return table_str
 
