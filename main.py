@@ -92,7 +92,7 @@ def get_stats() -> str:
 
 def generate_table(data) -> str:
     data_list = []
-    for item in data_list:
+    for item in data['data']:
         # item['grand_total']['text']
         # item['range']['date']
         data_list.append(item['range']['date'])
