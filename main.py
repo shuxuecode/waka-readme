@@ -91,18 +91,30 @@ def get_stats() -> str:
         return '```text\n'+data+'\n```'
 
 def generate_table(data) -> str:
-    data_list = []
+    table_str = '<table border="1" cellspacing="0" cellpadding="20" align="center">'
+    table_str += '<tbody>'
+    # 定义两行展示数据 
+    tr1 = '<tr>'
+    tr2 = '<tr>'
     for item in data['data']:
-        # item['grand_total']['text']
-        # item['range']['date']
-        data_list.append(item['range']['date'])
-        data_list.append(" -- ")
-        data_list.append(item['grand_total']['text'])
-    # print(data_list)    
-    data = '\n'.join(data_list)
+        tr1 += '<td>' + item['range']['date'] + '</td>'
+        tr2 += '<td>' + item['grand_total']['text'] + '</td>'
+    tr1 += '</tr>'
+    tr2 += '</tr>'
+    table_str += tr1 + tr2
+    table_str += '</tbody>'
+    table_str += '</table>'
+    # for item in data['data']:
+    #     # item['grand_total']['text']
+    #     # item['range']['date']
+    #     data_list.append(item['range']['date'])
+    #     data_list.append(" -- ")
+    #     data_list.append(item['grand_total']['text'])
+    # # print(data_list)    
+    # data = '\n'.join(data_list)
     print("debug")
-    print(data)
-    return data
+    print(table_str)
+    return table_str
 
 
 def decode_readme(data: str) -> str:
