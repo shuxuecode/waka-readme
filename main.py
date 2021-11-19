@@ -111,6 +111,7 @@ def generate_table(data) -> str:
     table_str += '</tbody>'
     table_str += '</table>'
     print(table_str)
+    print(datetime.datetime.today())
     return table_str
 
 
