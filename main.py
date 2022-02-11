@@ -96,7 +96,7 @@ def get_stats() -> str:
         return '```text\n'+data+'\n```'
 
 def generate_table(data) -> str:
-    table_str = '<table border="1" cellspacing="0" cellpadding="20" align="center">'
+    table_str = '<table border="1" cellspacing="0" cellpadding="20" align="center" style="border:1px solid #ccc;">'
     table_str += '<tbody>'
     table_str += '<tr align="center"><td colspan=7>Total coding time in the last 7 days : ' + data['cummulative_total']['text'] + '</td></tr>'
     # 定义两行展示数据 
