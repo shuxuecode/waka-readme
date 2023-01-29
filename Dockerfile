@@ -1,4 +1,5 @@
-FROM python:latest
+# FROM python:latest
+FROM python:3.7.16
 
 # Install dependencies.
 ADD requirements.txt /requirements.txt
