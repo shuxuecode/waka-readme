@@ -105,7 +105,8 @@ def generate_table(data) -> str:
     tr1 = '<tr>'
     tr2 = '<tr>'
     for item in data['data']:
-        tr1 += '<td>' + item['range']['date'] + '</td>'
+        # tr1 += '<td>' + item['range']['date'] + '</td>'
+        tr1 += '<td>' + item['range']['text'] + '</td>'
         tr2 += '<td>' + item['grand_total']['text'] + '</td>'
     tr1 += '</tr>'
     tr2 += '</tr>'
