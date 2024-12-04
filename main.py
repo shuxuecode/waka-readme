@@ -139,7 +139,7 @@ def format_date(date_str) -> str:
     weekday_str = weekday_cn[weekday_index]
 
     # 格式化输出结果
-    result = f"{month}月{day}号 {weekday_str}"
+    result = f"{month}月{day}号 <br> {weekday_str}"
     print(result)
     return result
 
