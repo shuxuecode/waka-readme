@@ -7,7 +7,6 @@ import os
 import base64
 import sys
 import datetime
-import calendar
 import requests
 from github import Github, GithubException
 
@@ -107,8 +106,7 @@ def generate_table(data) -> str:
     tr2 = '<tr>'
     for item in data['data']:
         # tr1 += '<td>' + item['range']['date'] + '</td>'
-        # tr1 += '<td>' + item['range']['text'] + '</td>'
-        tr1 += '<td>' + format_date(item['range']['date']) + '</td>'
+        tr1 += '<td>' + item['range']['text'] + '</td>'
         tr2 += '<td>' + item['grand_total']['text'] + '</td>'
     tr1 += '</tr>'
     tr2 += '</tr>'
@@ -119,27 +117,6 @@ def generate_table(data) -> str:
     print(datetime.datetime.today())
     return table_str
 
-def format_date(date_str) -> str:
-    print(date_str)
-    # 输入日期字符串
-    
-    # 将字符串转换为日期对象
-    date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-
-    # 获取月份和日期
-    month = date_obj.month
-    day = date_obj.day
-
-    # 获取星期几，日期对象的 weekday 方法返回的数字是从周一开始的（0），所以需要转换
-    weekday_index = date_obj.weekday()
-    # 将数字转换为中文星期
-    weekday_cn = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-    weekday_str = weekday_cn[weekday_index]
-
-    # 格式化输出结果
-    result = f"{month}月{day}号 {weekday_str}"
-    print(result)
-    return result
 
 def decode_readme(data: str) -> str:
     '''Decode the contents of old readme'''
