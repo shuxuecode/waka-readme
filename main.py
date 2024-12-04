@@ -124,7 +124,7 @@ def format_date(date_str) -> str:
     # 输入日期字符串
     
     # 将字符串转换为日期对象
-    date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+    date_obj = datetime.datetime.strptime(date_str, "%Y-%m-%d")
 
     print(date_obj)
 
