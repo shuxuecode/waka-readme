@@ -126,6 +126,8 @@ def format_date(date_str) -> str:
     # 将字符串转换为日期对象
     date_obj = datetime.strptime(date_str, "%Y-%m-%d")
 
+    print(date_obj)
+
     # 获取月份和日期
     month = date_obj.month
     day = date_obj.day
